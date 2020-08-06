@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Resources;
 using BaganFitness.BL.Controller;
 using BaganFitness.BL.Model;
 
@@ -8,9 +10,13 @@ namespace BaganFitness.CMD
     {
         static void Main()
         {
-            Console.WriteLine("Вас приветсвует приложение BaganFitness");
+            //CultureInfo culture = CultureInfo.CreateSpecificCulture("de-de");
+            CultureInfo culture = CultureInfo.CurrentCulture;
+            ResourceManager resourceManager = new ResourceManager("BaganFitness.CMD.Languages.Messages", typeof(Program).Assembly);
 
-            Console.WriteLine("Введите имя пользователя");
+            Console.WriteLine(resourceManager.GetString("Welcome", culture));
+
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
 
             string name = Console.ReadLine();
 
@@ -45,7 +51,7 @@ namespace BaganFitness.CMD
 
                 foreach (var item in eatingController.Eating.Foods)
                 {
-                    Console.WriteLine($"\t{item.Key} - {item.Value}");
+                    Console.WriteLine($"\t{item.Key} - {item.Value}"); 
                 }
             }
 
