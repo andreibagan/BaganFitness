@@ -16,7 +16,7 @@ namespace BaganFitness.BL.Controller
             }
         }
 
-        protected T Load<T>(string fileName) // TODO: МБ просто T
+        protected T Load<T>(string fileName)
         {
             var formatter = new BinaryFormatter();
 
